@@ -11,7 +11,11 @@ function shortenBytes(n: number) {
 
 const rjdl = async (url: string) => {
   const type = url.includes("rj.app/m/") ? "mp3/" : "podcast/"
-  const result = await axios.get(url)
+  const result = await axios.get(url, {
+    headers: {
+      'Access-Control-Allow-Origin': "https://rjdl-three.vercel.app/"
+    }
+  })
   const $ = load(result.data)
   const link = $("#__NEXT_DATA__")
   const datas = JSON.parse(link.text())
