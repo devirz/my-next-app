@@ -33,7 +33,7 @@ export default function Card() {
     setInputValue('')
     setInputDisable(true)
     setBtnValue('please wait...')
-    const data = await axios.post('http://localhost:3000/api',{
+    const data = await axios.post('http://localhost:3333/api',{
       url: inputValue
     })
     console.log(data.data);
