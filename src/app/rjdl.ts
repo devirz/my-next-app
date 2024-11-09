@@ -9,13 +9,19 @@ function shortenBytes(n: number) {
   return count
 }
 
+// const instance = axios.create({
+//   timeout: 5000,
+//   headers: {
+//     "Access-Control-Allow-Credentials": "true",
+//     "Access-Control-Allow-Origin": "https://rjdl-nexts-rn6j9v7au-devirzs-projects.vercel.app",
+//     "Access-Control-Allow-Methods": "GET,DELETE,PATCH,POST,PUT",
+//     "Access-Control-Allow-Headers": "X-CSRF-Token, X-Requested-With, Accept, Accept-Version, Content-Length, Content-MD5, Content-Type, Date, X-Api-Version"
+//   }
+// })
+
 const rjdl = async (url: string) => {
   const type = url.includes("rj.app/m/") ? "mp3/" : "podcast/"
-  const result = await axios.get(url, {
-    headers: {
-      'Access-Control-Allow-Origin': "https://rjdl-three.vercel.app/"
-    }
-  })
+  const result = await axios.get(url)
   const $ = load(result.data)
   const link = $("#__NEXT_DATA__")
   const datas = JSON.parse(link.text())
